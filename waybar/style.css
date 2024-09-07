@@ -1,0 +1,49 @@
+/* Default spacing : 10px */
+
+* {
+    font-family: Cantarell;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: rgba(18, 18, 18, 0.999);
+    border-radius: 0px;
+}
+
+tooltip {
+    background: rgb(18, 18, 18);
+}
+
+tooltip label {
+    color: white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#image.logo {
+    margin-left: 8px;    
+}
+
+#image.cover {
+    padding-right: 7.5px;
+}
+
+#custom-media {
+    /* color: #FFFFFF; */
+    font-weight: bold;
+}
+
+#custom-time {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#network {
+    font-family: "Font Awesome 6 Free";
+    margin-right: 10px;
+}
+
+#custom-powermenu {
+    margin-right: 10px;
+    color: #FFFFFF;
+}

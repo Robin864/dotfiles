@@ -1,0 +1,2 @@
+(deflisten volume :initial "0"
+"scripts/volumes.sh")

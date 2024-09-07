@@ -1,0 +1,90 @@
+{
+	"layer": "top",
+	"height": 30,
+
+	// Margins
+	"margin-top": 0,
+	"margin-bottom": 0,
+	"margin-left": 0,
+	"margin-right": 0,
+
+	// Modules
+	"modules-left": [
+		"image#logo"
+	],
+	"modules-center": [
+		"image#cover",
+		"custom/media",
+		"custom/time"
+	],
+	"modules-right": [
+		"pulseaudio",
+		"network",
+		"custom/powermenu"
+	],
+
+	// Modules left
+	"image#logo": {
+		"exec": "/home/robin/.config/waybar/scripts/os-logo.sh --default",
+		"size": 20
+	},
+
+	// Modules center
+	"image#cover": {
+		"exec": "python /home/robin/.config/waybar/scripts/media/mediacover.py 2> /dev/null", // Value correspond to the radius in percentage, it can be 30, 35, 40, 45, 50 or 100
+		"size": 23,
+		"signal": 2,
+		"on-click": "playerctl play-pause",
+		"on-click-right": "playerctl stop",
+		"smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous"
+	},
+	"custom/media": {
+		"format": "{}",
+		"return-type": "json",
+		"max-length": 30,
+		"on-click": "playerctl play-pause",
+		"on-click-right": "playerctl stop",
+		"smooth-scrolling-threshold": 1, // This value was tested using a trackpad, it should be lowered if using a mouse.
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous",
+		"exec": "python /home/robin/.config/waybar/scripts/media/mediaplayer.py -s 2 2> /dev/null" // Signal must match with previous defined one in media image
+	},
+	"custom/time": {
+		"format": "{}",
+		"signal": 2, // Same signal as image to display back hour when the player is not running
+		"interval": 60, // Refresh every minutes, increase for more precision
+		"exec": "python /home/robin/.config/waybar/scripts/time/time.py -f '%a %d %B %H:%M' 2> /dev/null" // Use -f to specify the format
+	},
+
+	// Modules right
+	"pulseaudio": {
+		"format": "{volume}%"
+	},
+	"network": {
+		// "interface": "wlp2s0",
+		"format": "{ifname}",
+		"format-wifi": "",
+		"format-ethernet": "",
+		"format-disconnected": "", //An empty format will hide the module.
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ipaddr}\n{ifname} ",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
+	},
+	"custom/powermenu": {
+		"format": "⏻ ",
+		"tooltip": true,
+		"tooltip-format": "Show power menu on click",
+		"menu": "on-click",
+		"menu-file": "/home/robin/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "poweroff",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+	}
+}

@@ -1,0 +1,32 @@
+(include "./volume/volume.yuck")
+
+(defwindow example
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "20px"
+                        :width "90%"
+                        :height "30px"
+                        :anchor "top center")
+    :stacking "fg"
+    :reserve (struts :distance "40px" :side "top")
+    :windowtype "dock"
+    :wm-ignore false
+    (greeter :text "Say hello"
+             :name "Robz"))
+
+(defwidget greeter [?text name] ; ?text mean the attribute is optional
+    (box :orientation "horizontal"
+         :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${text}'"
+        "Greet")))
+
+(defwidget labeled-container [name]
+    (box :class "container"
+        name
+        (children)))
+
+(defwidget two-boxes []
+    (box
+        (box :class "first" (children :nth 0))
+        (box :class "second" (children :nth 1))))

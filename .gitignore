@@ -1,0 +1,11 @@
+# Ignore non-cutomised configs folders
+*/
+mimeapps.list
+user-dirs.dirs
+user-dirs.locale
+
+# Keep custom
+!eww
+!gtk-*
+!labwc
+!waybar

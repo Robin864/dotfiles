@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<!--
+  This is a very simple config file with many options missing. For a complete
+  set of options with comments, see docs/rc.xml.all
+-->
+
+<labwc_config>
+
+	<core>
+		<decoration>server</decoration>
+	</core>
+
+	<placement>
+		<policy>cascade</policy>
+		<cascadeOffset x="20" y="20" />
+	</placement>
+
+	<theme>
+		<name>Robz</name>
+		<roundCorners>no</roundCorners>
+		<cornerRadius>0</cornerRadius>
+		<keepBorder>no</keepBorder>
+		<dropShadows>no</dropShadows>
+
+		<!-- General default font -->
+		<font>
+			<name>Cantarell</name>
+			<size>11</size>
+			<weight>normal</weight>
+		</font>
+
+		<!-- Window title in bold -->
+		<font place="ActiveWindow">
+			<name>Cantarell</name>
+			<size>11</size>
+			<weight>bold</weight>
+		</font>
+		<font place="InactiveWindow">
+			<name>Cantarell</name>
+			<size>11</size>
+			<weight>bold</weight>
+		</font>
+	</theme>
+
+	<!-- Workspaces -->
+	<desktops>
+		<popupTime>500</popupTime>
+		<number>5</number>
+		<prefix>Workspace </prefix>
+	</desktops>
+
+	<windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
+		<fields>
+			<field content="type" width="25%" />
+			<field content="trimmed_identifier" width="25%" />
+			<!-- <field content="identifier" width="25%" /> -->
+			<field content="title" width="30%" />
+		</fields>
+	</windowSwitcher>
+
+	<resistance>
+		<screenEdgeStrength>30</screenEdgeStrength>
+		<windowEdgeStrength>30</windowEdgeStrength>
+	</resistance>
+
+	<snapping>
+		<!-- Set range to 0 to disable window snapping completely -->
+		<range>1</range>
+		<overlay enabled="yes">
+			<delay inner="0" outer="0" />
+		</overlay>
+		<topMaximize>yes</topMaximize>
+		<notifyClient>always</notifyClient>
+	</snapping>
+
+	<!-- Define corners regions -->
+	<regions>
+		<region name="top-left"     x="0%"  y="0%"  height="50%"  width="50%"  />
+		<region name="top-right"    x="50%" y="0%"  height="50%"  width="50%"  />
+		<region name="bottom-left"  x="0%"  y="50%" height="50%"  width="50%"  />
+		<region name="bottom-right" x="50%" y="50%" height="50%"  width="50%"  />
+	</regions>
+
+	<!-- Keyboard shortcuts -->
+	<keyboard>
+		<default />
+
+		<!-- Player -->
+		<keybind key="XF86_AudioNext">
+			<action name="Execute" command="playerctl next" />
+		</keybind>
+		<keybind key="XF86_AudioPrev">
+			<action name="Execute" command="playerctl previous" />
+		</keybind>
+		<keybind key="XF86_AudioPlay">
+			<action name="Execute" command="playerctl play-pause" />
+		</keybind>
+
+		<keybind key="C-A-t"> <!-- Terminal -->
+			<action name="Execute" command="ptyxis --new-window" />
+		</keybind>
+
+		<keybind key="W-e"> <!-- File explorer -->
+			<action name="Execute" command="nautilus" />
+		</keybind>
+
+		<!-- Workspaces -->
+		<keybind key="C-A-left">
+			<action name="GoToDesktop" to="left" />
+		</keybind>
+		<keybind key="C-A-right">
+			<action name="GoToDesktop" to="right" />
+		</keybind>
+
+		<!-- Corners window placement -->
+		<keybind key="W-Home">
+      <action name="SnapToRegion" region="top-left" />
+    </keybind>
+    <keybind key="W-Prior">
+      <action name="SnapToRegion" region="top-right" />
+    </keybind>
+    <keybind key="W-End">
+      <action name="SnapToRegion" region="bottom-left" />
+    </keybind>
+    <keybind key="W-Next">
+      <action name="SnapToRegion" region="bottom-right" />
+    </keybind>
+	</keyboard>
+
+	<!-- Mouse interactions -->
+	<mouse>
+		<default />
+		<!-- Show a custom menu on desktop right click -->
+		<context name="Root">
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu" menu="custom-menu" />
+			</mousebind>
+		</context>
+
+		<!-- Click in a window corner to snap it to a corner -->
+		<!-- Do not work with GTK csd, preferable to use keybinds -->
+		<context name="TRCorner">
+      <mousebind button="Left" action="Click">
+        <action name="SnapToRegion" region="top-right" />
+      </mousebind>
+    </context>
+    <context name="BRCorner">
+      <mousebind button="Left" action="Click">
+        <action name="SnapToRegion" region="bottom-right" />
+      </mousebind>
+    </context>
+    <context name="TLCorner">
+      <mousebind button="Left" action="Click">
+        <action name="SnapToRegion" region="top-left" />
+      </mousebind>
+    </context>
+    <context name="BLCorner">
+      <mousebind button="Left" action="Click">
+        <action name="SnapToRegion" region="bottom-left" />
+      </mousebind>
+    </context>
+	</mouse>
+
+</labwc_config>
