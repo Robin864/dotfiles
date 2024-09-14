@@ -1,0 +1,28 @@
+.syswidget {
+    all: unset;
+    background-color: rgba($color: #ffffff, $alpha: 0.999);
+    border-radius: 20px;
+}
+
+.slider slider { // Remove slide button
+    all: unset;
+}
+
+.slider scale {
+    all: unset;
+}
+
+.slider scale trough {
+    background-color: white;
+    min-height: 1.5rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 20px;
+}
+
+.slider scale trough highlight {
+    background-color: green;
+    border-radius: 20px;
+}
+
+

@@ -1,4 +1,4 @@
-# Robz's LabWC Configuration
+# Robz's LabWC dotfiles
 
 These dotfiles are a work in progress and are intended for educational purposes only.  
 They are not meant for daily use.

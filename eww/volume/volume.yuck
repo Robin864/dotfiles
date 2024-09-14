@@ -1,0 +1,22 @@
+(defwindow syswidget
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "10%"
+                        :width "20%"
+                        :height "3%"
+                        :anchor "center bottom")
+    :stacking "fg"
+    :wm-ignore false
+    (volume :val "30"))
+
+(defwidget volume [val]
+    (box
+        :orientation "h"
+        :class "slider"
+        (scale
+            :min 0
+            :max 100
+            :value val
+            :active "false")
+    )
+)
